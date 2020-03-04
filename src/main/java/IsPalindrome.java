@@ -35,6 +35,8 @@ class IsPalindrome {
         System.out.println(isPalindrome.isPalindrome(121));
         System.out.println(isPalindrome.isPalindrome(-121));
         System.out.println(isPalindrome.isPalindrome(10));
+        System.out.println(isPalindrome.isPalindrome("A man, a plan, a canal: Panama"));
+
     }
 
     public boolean isPalindrome(int x) {
@@ -44,6 +46,30 @@ class IsPalindrome {
             if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
+            }
+        }
+        return isPalindrome;
+    }
+
+    public boolean isPalindrome(String str) {
+        str = str.toLowerCase();
+        boolean isPalindrome = true;
+        int i = 0;
+        int j = str.length() - 1;
+        while(i < j) {
+            if ((str.charAt(j) > 96 && str.charAt(j) < 123) || (str.charAt(j) > 47 && str.charAt(j) < 58)) {
+                if((str.charAt(i) > 96 && str.charAt(i) < 123) || (str.charAt(i) > 47 && str.charAt(i) < 58)) {
+                    if (str.charAt(i) != str.charAt(j)) {
+                        isPalindrome = false;
+                        break;
+                    }
+                    i++;
+                    j--;
+                } else {
+                    i++;
+                }
+            } else {
+                j--;
             }
         }
         return isPalindrome;

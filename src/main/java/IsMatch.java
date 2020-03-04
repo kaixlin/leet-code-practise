@@ -57,12 +57,49 @@
 //输出: false
 // Related Topics 字符串 动态规划 回溯算法
 
-
+import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class IsMatch {
-    public boolean isMatch(String s, String p) {
 
+    String output = "";
+
+    public static void main(String[] args) {
+        IsMatch isMatch = new IsMatch();
+        String s = "aa";
+        String p = "a";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "aa";
+        p = "a*";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "ab";
+        p = ".*";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "aab";
+        p = "c*a*b";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "mississippi";
+        p = "mis*is*p*.";
+        System.out.println(isMatch.isMatch(s, p));
+    }
+
+    public boolean isMatch(String s, String p) {
+        if (p.length() == 0) {
+            return s.length() == 0;
+        }
+        return false;
+    }
+
+    private void backtrace(String s, String pattern) {
+        if (s.equals(pattern)) {
+            output += s;
+        } else {
+            return;
+        }
+
+        for (int i = 0; i < pattern.length(); i++) {
+//            String p = pattern.sub
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
