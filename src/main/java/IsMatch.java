@@ -61,8 +61,84 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class IsMatch {
-    public boolean isMatch(String s, String p) {
 
+    public static void main(String[] args) {
+        IsMatch isMatch = new IsMatch();
+        String s = "ab";
+        String p = ".*c";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "abab";
+        p = ".*ab";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "abab";
+        p = "ab*ab";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "abab";
+        p = "ab*a.*b";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "aaa";
+        p = "a*a";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "aaa";
+        p = "aaaa";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "aaa";
+        p = ".*aa";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "ss";
+        p = "a";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "aa";
+        p = "a*";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "ab";
+        p = ".*";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "aab";
+        p = "c*a*b";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "mississippi";
+        p = "mis*is*p*.";
+        System.out.println(isMatch.isMatch(s, p));
+        s = "abcd";
+        p = "d*";
+        System.out.println(isMatch.isMatch(s, p));
+    }
+
+    public boolean isMatch(String s, String p) {
+        int patternProgress = 0;
+        for (int i = 0; i < s.length(); i++) {
+            boolean isMatched = false;
+            for (int j = patternProgress; j < p.length(); j++) {
+                if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
+                    patternProgress = j + 1;
+                    isMatched = true;
+                    break;
+                }
+                if (p.charAt(j) == '*') {
+                    if (i > 0 && s.charAt(i - 1) == s.charAt(i) || p.charAt(j - 1) == '.') {
+                        isMatched = true;
+                        break;
+                    }
+                } else if (j >= p.length() - 1 || p.charAt(j + 1) != '*') {
+                    break;
+                }
+            }
+
+            if (!isMatched) {
+                return false;
+            }
+        }
+
+        if (patternProgress < p.length()) {
+            if (p.charAt(patternProgress) != '*') {
+                return false;
+            }
+            String restPattern = p.substring(patternProgress + 1);
+            return s.endsWith(restPattern);
+        }
+
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
