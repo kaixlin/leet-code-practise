@@ -50,4 +50,12 @@ public final class ListNodeUtil {
         }
         return listNodes.get(0);
     }
+
+    public static void appendLinkedList(ListNode head, ListNode appendHead) {
+        ListNode current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = appendHead;
+    }
 }
