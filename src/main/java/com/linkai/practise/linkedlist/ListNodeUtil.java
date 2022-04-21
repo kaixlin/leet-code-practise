@@ -51,6 +51,21 @@ public final class ListNodeUtil {
         return listNodes.get(0);
     }
 
+    public static ListNode buildCycleLinkedList(List<Integer> arrays) {
+        ListNode head = buildLinkedList(arrays);
+        ListNode tail = getTailNode(head);
+        tail.next = head;
+        return head;
+    }
+
+    public static ListNode getTailNode(ListNode head) {
+        ListNode current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        return current;
+    }
+
     public static void appendLinkedList(ListNode head, ListNode appendHead) {
         ListNode current = head;
         while (current.next != null) {
