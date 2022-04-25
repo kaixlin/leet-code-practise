@@ -1,8 +1,6 @@
 package com.linkai.practise.tree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * 给你一棵二叉树的根节点 root ，返回其节点值的 后序遍历 。
@@ -34,7 +32,7 @@ public class LeetCode145 {
     public static void example1() {
         TreeNode root = TreeNodeUtil.buildTree(Arrays.asList(1,null,2,3));
         List<Integer> expected = Arrays.asList(3,2,1);
-        List<Integer> actual = new LeetCode145().postorderTraversal(root);
+        List<Integer> actual = new LeetCode145().postorderTraversal2(root);
         System.out.println("示例1，输出结果：" + (actual.equals(expected) ? "成功" : "失败"));
     }
 
@@ -50,6 +48,28 @@ public class LeetCode145 {
         List<Integer> expected = Arrays.asList(1);
         List<Integer> actual = new LeetCode145().postorderTraversal(root);
         System.out.println("示例3，输出结果：" + (actual.equals(expected) ? "成功" : "失败"));
+    }
+
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        List<Integer> result = new ArrayList<>();
+        TreeNode current;
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            current = stack.pop();
+            result.add(current.val);
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+        }
+        Collections.reverse(result);
+        return result;
     }
 
     public List<Integer> postorderTraversal(TreeNode root) {
