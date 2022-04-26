@@ -1,8 +1,20 @@
 package com.linkai.practise.tree;
 
 import java.util.List;
+import java.util.Objects;
 
 public final class TreeNodeUtil {
+
+    public static boolean isEqual(TreeNode expected, TreeNode actual) {
+        if (expected == null && actual == null) {
+            return true;
+        }
+        if (expected != null && actual != null) {
+            return Objects.equals(expected.val, actual.val) &&
+                    isEqual(expected.left, actual.left) && isEqual(expected.right, actual.right);
+        }
+        return false;
+    }
 
     public static TreeNode buildTree(List<Integer> array) {
         if (array.size() == 0) {
