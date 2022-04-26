@@ -18,7 +18,7 @@ import java.util.*;
  * 输入：root = []
  * 输出：[]
  */
-public class TreeNode102 {
+public class LeetCode102 {
     public static void main(String[] args) {
         example1();
         example2();
@@ -28,21 +28,21 @@ public class TreeNode102 {
     public static void example1() {
         TreeNode root = TreeNodeUtil.buildTree(Arrays.asList(3,9,20,null,null,15,7), TreeBuildMode.LEVEL);
         List<List<Integer>> expected = Arrays.asList(Arrays.asList(3), Arrays.asList(9,20), Arrays.asList(15,7));
-        List<List<Integer>> actual = new TreeNode102().levelOrder(root);
+        List<List<Integer>> actual = new LeetCode102().levelOrder(root);
         System.out.println("示例1，输出结果：" + (actual.equals(expected) ? "成功" : "失败"));
     }
 
     public static void example2() {
         TreeNode root = TreeNodeUtil.buildTree(Arrays.asList(1), TreeBuildMode.LEVEL);
         List<List<Integer>> expected = Arrays.asList(Arrays.asList(1));
-        List<List<Integer>> actual = new TreeNode102().levelOrder(root);
+        List<List<Integer>> actual = new LeetCode102().levelOrder(root);
         System.out.println("示例2，输出结果：" + (actual.equals(expected) ? "成功" : "失败"));
     }
 
     public static void example3() {
         TreeNode root = null;
         List<List<Integer>> expected = new ArrayList<>();
-        List<List<Integer>> actual = new TreeNode102().levelOrder(root);
+        List<List<Integer>> actual = new LeetCode102().levelOrder(root);
         System.out.println("示例3，输出结果：" + (actual.equals(expected) ? "成功" : "失败"));
     }
 
