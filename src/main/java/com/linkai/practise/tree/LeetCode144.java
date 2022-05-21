@@ -1,8 +1,9 @@
 package com.linkai.practise.tree;
 
-import com.linkai.practise.linkedlist.ListNodeUtil;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * 给你二叉树的根节点 root ，返回它节点值的前序遍历。

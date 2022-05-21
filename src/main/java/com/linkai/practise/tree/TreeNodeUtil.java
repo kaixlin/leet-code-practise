@@ -27,7 +27,7 @@ public final class TreeNodeUtil {
         if (array.size() == 0) {
             return null;
         }
-        return buildTree(array, 0, TreeBuildMode.LEVEL);
+        return buildTree(array, 0, mode);
     }
 
     private static TreeNode buildTree(List<Integer> array, int rootTreeNodeIndex, TreeBuildMode mode) {
@@ -35,8 +35,12 @@ public final class TreeNodeUtil {
             return null;
         }
         TreeNode root = new TreeNode(array.get(rootTreeNodeIndex));
-        TreeNode left = buildTree(array, rootTreeNodeIndex + 1, mode);
-        TreeNode right = buildTree(array, rootTreeNodeIndex + 2, mode);
+        TreeNode left = null;
+        TreeNode right = null;
+        if (mode == TreeBuildMode.DEFAULT) {
+            left = buildTree(array, rootTreeNodeIndex + 1, mode);
+            right = buildTree(array, rootTreeNodeIndex + 2, mode);
+        }
         if (mode == TreeBuildMode.LEVEL) {
             left = buildTree(array, rootTreeNodeIndex * 2 + 1, mode);
             right = buildTree(array, rootTreeNodeIndex * 2 + 2, mode);
