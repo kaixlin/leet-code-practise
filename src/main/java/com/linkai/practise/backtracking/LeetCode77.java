@@ -1,7 +1,9 @@
 package com.linkai.practise.backtracking;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。
@@ -79,7 +81,7 @@ public class LeetCode77 {
             result.add(new ArrayList<>(path));
             return;
         }
-
+        //剪枝优化：每层遍历如果大于n - (k - path.size()) + 1就没有意义了
         for (int i = startIndex; i <= n - (k - path.size()) + 1; i++) {
             path.add(i);
             backtracking2(n, k, i + 1, path, result);
